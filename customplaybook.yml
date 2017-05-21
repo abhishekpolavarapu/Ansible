@@ -14,12 +14,12 @@
      prompt: Web Domain
   tasks:
     - name: Install Lynx Web Browser
-	  action: yum name=lynx state=installed
-	- name: Check for telnet Client
-	  action: yum name=telnet state=absent
-	- name: Install Apache Web Server
-	  action: yum name=httpd state=installed
-	  notify: Restart HTTPD
+      action: yum name=lynx state=installed
+    - name: Check for telnet Client
+      action: yum name=telnet state=absent
+    - name: Install Apache Web Server
+      action: yum name=httpd state=installed
+      notify: Restart HTTPD
   handlers:
     - name: Restart HTTPD
-	  action: service name=httpd state=restarted
+      action: service name=httpd state=restarted
