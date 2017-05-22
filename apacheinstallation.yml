@@ -1,0 +1,18 @@
+--- # installing apache on redhat and Debian systems
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  vars:
+    playbook_type: conditional
+  vars_files:
+    - conf/copyright.yml
+    - conf/webdefaults.yml
+  tasks:
+    - name: Install Apache appropriate to the Distribtion type (Debian/ubuntu)
+      command: apt-get -y install apache2
+      when: "ansible_os_family"=="Debian"
+    - name: Install Apache appropriate to the Distribtion type (redHat/CentOS)
+      command: apt-get -y install httpd
+      when: "ansible_os_family"=="RedHat"
+	 
